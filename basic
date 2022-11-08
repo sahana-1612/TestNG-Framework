@@ -1,0 +1,25 @@
+package testNGnew;
+
+import org.testng.annotations.Test;
+
+public class firstprogram {
+	@Test(priority=1)
+	void url() {
+		// web driver for open url
+		System.out.println("Open url");
+	}
+
+	@Test(priority=2)
+	void login() {
+		// login
+		System.out.println("login");
+
+	}
+
+	@Test(priority=3)
+	void logout() {
+		// logout
+		System.out.println("logout");
+	}
+
+}
