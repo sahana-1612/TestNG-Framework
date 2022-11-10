@@ -1,0 +1,35 @@
+package dependency;
+
+import static org.testng.Assert.assertTrue;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class dependancyMethod {
+	@Test(priority=1)
+	void openurl() {
+		System.out.println("open url");
+		Assert.assertTrue(true);
+	}
+	@Test(priority=2,dependsOnMethods= {"openURL"})
+	void login() {
+		System.out.println("Login");
+		Assert.assertTrue(false);
+		
+	}
+	@Test(priority=3,dependsOnMethods= {"login"})
+	void search() {
+		System.out.println("logout");
+		Assert.assertTrue(true);
+	}
+	@Test(priority=4,dependsOnMethods= {"login","search"} )
+	void advancedsearch() {
+		System.out.println("Advance search");
+		Assert.assertTrue(true);
+	}
+	@Test(priority=5)
+	void logout() {
+		System.out.println("Logout");
+		Assert.assertTrue(true);
+	}
+}
