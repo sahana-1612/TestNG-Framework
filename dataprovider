@@ -1,0 +1,43 @@
+package dependency;
+
+import java.sql.Driver;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+driver driver;
+public class dataprovider<WebDriver> {
+	@BeforeClass
+	void setup() {
+		System.setProperty("webdriver.chrome.driver", "/Users/sahana/Downloads/chromedriver");
+        Driver driver = new ChromeDriver(); //
+
+	}
+@Test
+	void logintest(String username, String password) {
+	{
+		driver.findElement(By.xpath("//tbody/tr[2]/td[2]/input[1]")).sendKeys(username);
+		driver.findElement(By.xpath("//tbody/tr[3]/td[2]/input[1]")).sendKeys(password);
+		driver.findElement(By.linkText("SIGN-ON")).click();
+		 driver.navigate().back();   
+
+
+	}
+	@DataProvider (name = "users")
+	String[][] loginData()
+	{
+		String data[][]= {{"hello","new1"}, {"hi","new2"}, {"Morning","new3"}};
+		return data;
+	}
+	
+	@AfterClass
+	void CloseBrowser()
+	{
+		driver.close();
+	}
+}
